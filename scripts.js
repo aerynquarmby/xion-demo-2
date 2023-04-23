@@ -130,15 +130,16 @@ async function payNow() {
     };
 
     try {
-        const response =
-            await fetch(apiUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": apiKey
-                },
-                body: JSON.stringify(singleBillData)
-            });
+        const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey
+        },
+        body: JSON.stringify(singleBillData),
+        mode: "no-cors"
+        });
+
 
         const responseData = await response.json();
 
