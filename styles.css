@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.img-container {
+    max-width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.img-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button.connected {
+    background-color: green;
+}
