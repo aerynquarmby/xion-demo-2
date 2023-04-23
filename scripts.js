@@ -123,23 +123,22 @@ async function payNow() {
     }
 
     const singleBillData = {
-        "buyer_address": userAddress,
-        "currency": "usdt",
         "product_name": "NFT",
-        "usd_value": parseFloat(price).toFixed(2),
-        "description": "NFT purchase"
+        "amount": parseFloat(price),
+        "currency": "usdt",
+        "buyer_address": userAddress
     };
 
     try {
         const response =
- await fetch(apiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": apiKey
-            },
-            body: JSON.stringify(singleBillData)
-        });
+            await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-api-key": apiKey
+                },
+                body: JSON.stringify(singleBillData)
+            });
 
         const responseData = await response.json();
 
@@ -155,6 +154,7 @@ async function payNow() {
         alert("Error processing payment. Please try again.");
     }
 }
+
 
 document.getElementById("connect-wallet").addEventListener("click", connectWallet);
 document.getElementById("approve-usdt").addEventListener("click", approveUSDT);
