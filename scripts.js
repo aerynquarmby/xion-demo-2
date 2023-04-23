@@ -1,5 +1,9 @@
 const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMHhFMTMxNzJhODI5RjBiQTYyMDIwQ0M4MDJlOGQ2OGFkNDM5NjNGOTgzIiwiY2xpZW50X2lkIjoiNWtvc3U3NnAyNjA3cGVpbjUwZjIzbHJ2bGgiLCJjbGllbnRfc2VjcmV0IjoidmxwOG9pNjRsOGdndjNlOGxnNDJmdWhka2ltZjQwOGRlc2ZiNjJkZm9mdjdqanBwbnM0IiwiZXhwIjoxNjg0ODY5Mzk2LCJpYXQiOjE2ODIyNzczOTYsImlzcyI6Ilhpb24gR2xvYmFsIFNlcnZpY2UgQVBJIn0.RYWRfMR-w-4VI-Y2PItofDeMl8dNC240lAweOm5piuA";
 const apiUrl = "https://api.xion.global/v2/single-bill/create";
+import { ethers } from "ethers";
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const signer = provider.getSigner();
+const contract = new ethers.Contract(contractAddress, contractAbi, signer);
 let userAddress;
 let usdtContract;
 
@@ -30,9 +34,9 @@ async function approveUSDT() {
         "function allowance(address owner, address spender) view returns (uint256)",
         "function decimals() view returns (uint8)"
     ];
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, signer);
+
+    const web3 = new Web3(window.ethereum);
+    const usdtContract = new web3.eth.Contract(usdtAbi, usdtAddress);
     const xgWalletAddress = "0x61e129d8b0836F05b64d7c59500F4fa042EA8c5B"; // XG wallet address
     const priceInput = document.getElementById("price");
     const price = priceInput.value;
@@ -40,12 +44,11 @@ async function approveUSDT() {
         alert("Please enter a valid USD amount.");
         return;
     }
-    const usdtValue = ethers.utils.parseUnits(price, 6);
+    const usdtValue = web3.utils.toWei(price, "mwei");
     try {
-        const allowance = await usdtContract.allowance(userAddress, xgWalletAddress);
-        if (allowance.lt(usdtValue)) {
-            const tx = await usdtContract.approve(xgWalletAddress, ethers.constants.MaxUint256);
-            await tx.wait();
+        const allowance = await usdtContract.methods.allowance(userAddress, xgWalletAddress).call();
+        if (allowance < usdtValue) {
+            const tx = await usdtContract.methods.approve(xgWalletAddress, web3.utils.toBN(2).pow(web3.utils.toBN(256)).sub(web3.utils.toBN(1))).send({ from: userAddress });
             console.log("USDT approval tx:", tx);
             alert("USDT approval successful!");
         } else {
@@ -58,11 +61,6 @@ async function approveUSDT() {
         alert("Error approving USDT. Please try again.");
     }
 }
-
-
-
-
-
 
 async function payNow() {
     const priceInput = document.getElementById("price");
