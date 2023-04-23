@@ -11,6 +11,7 @@ body {
 }
   
 .img-container img {
+    align-img: center;
     max-width: 100%;
     height: auto;
 }
