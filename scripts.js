@@ -158,7 +158,7 @@ async function payNow() {
       },
       body: JSON.stringify({
         productName: "NFT",
-        amount: price,
+        amount: Number(price),
         currency: "usdt",
         buyerAddress: userAddress,
       }),
@@ -166,7 +166,7 @@ async function payNow() {
 
     const responseData = await response.json();
 
-    if (responseData.status === "success") {
+    if (responseData.status === "successful") {
       console.log("Payment successful:", responseData);
       alert("Payment successful!");
     } else {
