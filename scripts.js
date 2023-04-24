@@ -151,7 +151,7 @@ async function payNow() {
 }
 
 
-
+/*
         const responseData = await response.json();
 
         if (responseData.status === "success") {
@@ -166,7 +166,7 @@ async function payNow() {
         alert("Error processing payment. Please try again.");
     }
 }
-
+*/
 
 document.getElementById("connect-wallet").addEventListener("click", connectWallet);
 document.getElementById("approve-usdt").addEventListener("click", approveUSDT);
