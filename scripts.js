@@ -114,30 +114,41 @@ async function approveUSDT() {
 }
 
 async function payNow() {
-    const priceInput = document.getElementById("price");
-    const price = priceInput.value;
+  const priceInput = document.getElementById("price");
+  const price = priceInput.value;
 
-    if (!price || parseFloat(price) <= 0) {
-        alert("Please enter a valid USD amount.");
-        return;
-    }
+  if (!price || parseFloat(price) <= 0) {
+    alert("Please enter a valid USD amount.");
+    return;
+  }
 
-    const singleBillData = {
-        "product_name": "NFT",
-        "amount": parseFloat(price),
-        "currency": "usdt",
-        "buyer_address": userAddress
-    };
+  const usdtValue = Web3.utils.toWei(price, "mwei");
 
-    try {
-        const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
+  try {
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + apiKey
-        },
-    body: JSON.stringify(singleBillData),
-});
+        "Authorization": `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        userAddress: userAddress,
+        contractAddress: contractAddress,
+        contractAbi: contractAbi,
+        tokenAmount: usdtValue,
+        walletAddress: xgWalletAddress
+      })
+    });
+
+    const responseData = await response.json();
+    console.log(responseData);
+    alert("Payment successful!");
+
+  } catch (error) {
+    console.error("Error making payment:", error);
+    alert("Error making payment. Please try again.");
+  }
+}
 
 
 
