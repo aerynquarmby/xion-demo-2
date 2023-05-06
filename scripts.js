@@ -163,17 +163,24 @@ function showSpinner() {
   spinner.style.position = "fixed";
   spinner.style.top = "50%";
   spinner.style.left = "50%";
+  spinner.style.transform = "translate(-50%, -50%)";
   spinner.style.zIndex = "1000";
-  spinner.innerHTML = `<img src="https://media.giphy.com/media/WiIuC6fAOoXD2/giphy.gif" alt="Processing..."/>`;
+  spinner.innerHTML = `
+    <div style="width:100%;height:0;padding-bottom:56%;position:relative;">
+      <iframe src="https://giphy.com/embed/hTrXs1jw6ABY9dDyxS" 
+              width="100%" 
+              height="100%" 
+              style="position:absolute" 
+              frameBorder="0" 
+              class="giphy-embed" 
+              allowFullScreen>
+      </iframe>
+    </div>
+    <p><a href="https://giphy.com/gifs/looping-infinite-loop-cmdrkitten-hTrXs1jw6ABY9dDyxS">via GIPHY</a></p>
+  `;
   document.body.appendChild(spinner);
 }
 
-function hideSpinner() {
-  const spinner = document.getElementById("spinner");
-  if (spinner) {
-    document.body.removeChild(spinner);
-  }
-}
 
 function showSuccessPopup(txHash, orderCode) {
   const successPopup = document.createElement("div");
