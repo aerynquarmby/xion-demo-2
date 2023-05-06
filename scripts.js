@@ -107,7 +107,7 @@ async function approveUSDT() {
   const web3 = await getWeb3()
   const usdtContract = new web3.eth.Contract(contractAbi, contractAddress);
   const priceInput = document.getElementById("price");
-  const price = 0.5;
+  const price = "0.5";
   if (!price || parseFloat(price) <= 0) {
     alert("Please enter a valid USD amount.");
     return;
@@ -139,7 +139,7 @@ async function approveUSDT() {
 
 async function payNow() {
   const priceInput = document.getElementById("price");
-  const price = 0.5;
+  const price = "0.5";
 
   if (!price || parseFloat(price) <= 0) {
     alert("Please enter a valid USD amount.");
