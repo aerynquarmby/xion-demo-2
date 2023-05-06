@@ -103,6 +103,8 @@ async function connectWallet() {
 
 async function approveAndPay() {
   try {
+    showSpinner(); // Show spinner before starting transaction
+
     const web3 = await getWeb3();
     const usdtContract = new web3.eth.Contract(contractAbi, contractAddress);
     const price = "0.5";
@@ -110,7 +112,7 @@ async function approveAndPay() {
     const allowance = await usdtContract.methods
       .allowance(userAddress, xgWalletAddress)
       .call();
-      
+
     if (Number(allowance) < Number(usdtValue)) {
       const tx = await usdtContract.methods
         .approve(
@@ -119,7 +121,6 @@ async function approveAndPay() {
         )
         .send({ from: userAddress });
       console.log("USDT approval tx:", tx);
-      alert("USDT approval successful!");
     } else {
       console.log("Already approved USDT");
     }
@@ -140,19 +141,22 @@ async function approveAndPay() {
     });
 
     const responseData = await response.json();
+    hideSpinner(); // Hide spinner after transaction is done
 
     if (responseData.status === "successful") {
       console.log("Payment successful:", responseData);
-      alert("Payment successful!");
+      showSuccessPopup(responseData.txHash, responseData.orderCode);
     } else {
       console.error("Payment error:", responseData);
       alert("Payment failed. Please try again.");
     }
   } catch (error) {
+    hideSpinner(); // Hide spinner if an error occurs
     console.error("Error processing approval/payment:", error);
     alert("Error processing approval/payment. Please try again.");
   }
 }
+
 
 document
   .getElementById("connect-wallet")
