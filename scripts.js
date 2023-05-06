@@ -103,20 +103,16 @@ async function connectWallet() {
     .addEventListener("click", approveUSDT);
 }
 
-async function approveUSDT() {
-  const web3 = await getWeb3()
-  const usdtContract = new web3.eth.Contract(contractAbi, contractAddress);
-  const priceInput = document.getElementById("price");
-  const price = "0.5";
-  if (!price || parseFloat(price) <= 0) {
-    alert("Please enter a valid USD amount.");
-    return;
-  }
-  const usdtValue = web3.utils.toWei(price, "mwei");
+async function approveAndPay() {
   try {
+    const web3 = await getWeb3();
+    const usdtContract = new web3.eth.Contract(contractAbi, contractAddress);
+    const price = "0.5";
+    const usdtValue = web3.utils.toWei(price, "mwei");
     const allowance = await usdtContract.methods
       .allowance(userAddress, xgWalletAddress)
       .call();
+      
     if (Number(allowance) < Number(usdtValue)) {
       const tx = await usdtContract.methods
         .approve(
@@ -128,33 +124,14 @@ async function approveUSDT() {
       alert("USDT approval successful!");
     } else {
       console.log("Already approved USDT");
-      alert("USDT already approved");
     }
-    document.getElementById("pay-now").disabled = false;
-  } catch (error) {
-    console.error("Error approving USDT:", error);
-    alert("Error approving USDT. Please try again.");
-  }
-}
 
-async function payNow() {
-  const priceInput = document.getElementById("price");
-  const price = "0.5";
-
-  if (!price || parseFloat(price) <= 0) {
-    alert("Please enter a valid USD amount.");
-    return;
-  }
-
-  //const usdtValue = Web3.utils.toWei(price, "mwei");
-
-  try {
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
-        "Accept": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
         productName: "NFT",
@@ -174,13 +151,14 @@ async function payNow() {
       alert("Payment failed. Please try again.");
     }
   } catch (error) {
-    console.error("Error processing payment:", error);
-    alert("Error processing payment. Please try again.");
+    console.error("Error processing approval/payment:", error);
+    alert("Error processing approval/payment. Please try again.");
   }
 }
 
 document
   .getElementById("connect-wallet")
   .addEventListener("click", connectWallet);
-document.getElementById("approve-usdt").addEventListener("click", approveUSDT);
-document.getElementById("pay-now").addEventListener("click", payNow);
+document
+  .getElementById("approve-and-pay")
+  .addEventListener("click", approveAndPay);
