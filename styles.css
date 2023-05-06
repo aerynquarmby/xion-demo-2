@@ -53,20 +53,9 @@ body {
 }
 
 /* Style labels, inputs, and paragraphs */
-label, input, p {
+label, p {
   color: #ffffff;
   margin-bottom: 0.5rem;
-}
-
-input {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-  background-color: #3a3a3a;
-  border: none;
-  color: #ffffff;
-  padding: 0.5rem;
-  border-radius: 5px;
 }
 
 /* Style buttons */
