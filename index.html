@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xion Web3 Custom Integration Example (NFT Purchase)</title>
+    <title>Astronaut NFT</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
@@ -11,15 +11,14 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="title">Xion Web3 Custom Integration Example (NFT Purchase)</h1>
+        <h1 class="title">Astronaut NFT (In-Game Asset)</h1>
         <div class="nft-container">
             <div class="img-container">
                 <img class="nft-image" src="Xion_Astronaut.png" alt="NFT Image" />
-            </div>          
-            <h2 class="nft-title">Astronaut NFT</h2>
-            <label for="price">Enter USD Amount:</label>
+            </div> 
+            <h2 class="nft-title">Current Price: 0.50 USDT (Polygon) / $0.50 </h2>
+            <label for="price">Current USDT Price</label>
             <input type="number" id="price" step="0.01">
-            <p>Default Currency: USDT</p>
             <button class="btn" id="connect-wallet">Connect Wallet</button>
             <button class="btn" id="approve-usdt" disabled>Approve USDT</button>
             <button class="btn" id="pay-now" disabled>Pay Now</button>
