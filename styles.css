@@ -44,31 +44,61 @@ body {
   border-radius: 10px;
 }
 
-/* Style the purchase button */
-.purchase-button {
+/* Style the NFT title */
+.nft-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+/* Style labels, inputs, and paragraphs */
+label, input, p {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  background-color: #3a3a3a;
+  border: none;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Style buttons */
+.btn {
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1rem;
   background-color: #4a4a4a;
   color: #ffffff;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
   border-radius: 5px;
-  margin: 1.5rem auto;
+  margin: 0.5rem;
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.purchase-button:hover {
+.btn:hover {
   background-color: #3a3a3a;
   transform: scale(1.05);
 }
+
 /* Add responsive styles */
 @media screen and (max-width: 768px) {
   .title {
     font-size: 2rem;
   }
 
-  .purchase-button {
-    font-size: 1rem;
+  .nft-title {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
     padding: 0.5rem 1rem;
   }
 }
