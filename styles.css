@@ -37,7 +37,7 @@ body {
 /* Style the NFT image */
 .nft-image {
   display: block;
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
   margin: 0 auto;
   border: 5px solid #ffffff;
