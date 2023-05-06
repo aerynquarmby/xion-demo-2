@@ -19,6 +19,22 @@
             <h2 class="nft-title">Price: 0.50 USDT (Polygon)</h2>
             <button class="btn" id="connect-wallet">Connect Wallet</button>
             <button class="btn" id="approve-and-pay" disabled>Approve and Pay</button>
+            <!-- Spinner pop-up -->
+            <div class="popup" id="spinner-popup">
+            <div class="popup-content">
+            <h2 class="popup-title">Processing Transaction</h2>
+            <div class="spinner"></div>
+        </div>
+</div>
+
+<!-- Success pop-up -->
+<div class="popup" id="success-popup">
+  <div class="popup-content">
+    <h2 class="popup-title">Purchase Successful!</h2>
+    <p id="transaction-info"></p>
+  </div>
+</div>
+
         </div>
     </div>
     <script src="scripts.js"></script>
