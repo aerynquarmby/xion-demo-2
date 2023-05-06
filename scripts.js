@@ -85,23 +85,21 @@ const getWeb3 = async () => {
 };
 
 async function connectWallet() {
-    try {
-      const web3 = await getWeb3()
-      const userAddressList = await web3.eth.requestAccounts();
-      userAddress = userAddressList[0]
-      console.log("Connected:", userAddress);
-      const connectWalletButton = document.getElementById("connect-wallet");
-      connectWalletButton.textContent = "Connected";
-      connectWalletButton.style.backgroundColor = "green";
-      document.getElementById("approve-usdt").disabled = false;
-    } catch (error) {
-      console.error("Error connecting wallet:", error);
-      alert("Error connecting wallet. Please try again.");
-    }
-  document
-    .getElementById("approve-usdt")
-    .addEventListener("click", approveUSDT);
+  try {
+    const web3 = await getWeb3()
+    const userAddressList = await web3.eth.requestAccounts();
+    userAddress = userAddressList[0]
+    console.log("Connected:", userAddress);
+    const connectWalletButton = document.getElementById("connect-wallet");
+    connectWalletButton.textContent = "Connected";
+    connectWalletButton.style.backgroundColor = "green";
+    document.getElementById("approve-and-pay").disabled = false;
+  } catch (error) {
+    console.error("Error connecting wallet:", error);
+    alert("Error connecting wallet. Please try again.");
+  }
 }
+
 
 async function approveAndPay() {
   try {
