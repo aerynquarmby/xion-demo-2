@@ -157,6 +157,50 @@ async function approveAndPay() {
   }
 }
 
+function showSpinner() {
+  const spinner = document.createElement("div");
+  spinner.id = "spinner";
+  spinner.style.position = "fixed";
+  spinner.style.top = "50%";
+  spinner.style.left = "50%";
+  spinner.style.zIndex = "1000";
+  spinner.innerHTML = `<img src="https://media.giphy.com/media/WiIuC6fAOoXD2/giphy.gif" alt="Processing..."/>`;
+  document.body.appendChild(spinner);
+}
+
+function hideSpinner() {
+  const spinner = document.getElementById("spinner");
+  if (spinner) {
+    document.body.removeChild(spinner);
+  }
+}
+
+function showSuccessPopup(txHash, orderCode) {
+  const successPopup = document.createElement("div");
+  successPopup.id = "success-popup";
+  successPopup.style.position = "fixed";
+  successPopup.style.top = "50%";
+  successPopup.style.left = "50%";
+  successPopup.style.zIndex = "1000";
+  successPopup.style.backgroundColor = "white";
+  successPopup.style.borderRadius = "5px";
+  successPopup.style.padding = "1rem";
+  successPopup.innerHTML = `
+    <h3 style="color:green;">Purchase Successful</h3>
+    <p>Transaction Hash: <a href="https://polygonscan.com/tx/${txHash}" target="_blank">${txHash}</a></p>
+    <p>Order Code: ${orderCode}</p>
+    <button onclick="closeSuccessPopup()">Close</button>
+  `;
+  document.body.appendChild(successPopup);
+}
+
+function closeSuccessPopup() {
+  const successPopup = document.getElementById("success-popup");
+  if (successPopup) {
+    document.body.removeChild(successPopup);
+  }
+}
+
 
 document
   .getElementById("connect-wallet")
