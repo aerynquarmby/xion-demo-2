@@ -166,7 +166,7 @@ function showSpinner() {
   spinner.style.transform = "translate(-50%, -50%)";
   spinner.style.zIndex = "1000";
   spinner.innerHTML = `
-    <div style="width:150%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/RgzryV9nRCMHPVVXPV" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/trippy-abstract-pi-slices-RgzryV9nRCMHPVVXPV">via GIPHY</a></p>
+    <div style="width:300%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/RgzryV9nRCMHPVVXPV" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/trippy-abstract-pi-slices-RgzryV9nRCMHPVVXPV">via GIPHY</a></p>
   `;
   document.body.appendChild(spinner);
 }
