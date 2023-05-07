@@ -211,8 +211,6 @@ function showSuccessPopup(txHash, orderCode) {
   document.getElementById("close-popup-btn").addEventListener("click", closeSuccessPopup);
 }
 
-
-
 function closeSuccessPopup() {
   const successPopup = document.getElementById("success-popup");
   if (successPopup) {
