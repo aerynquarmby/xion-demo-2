@@ -184,6 +184,7 @@ function showSuccessPopup(txHash, orderCode) {
   successPopup.style.position = "fixed";
   successPopup.style.top = "50%";
   successPopup.style.left = "50%";
+  successPopup.style.transform = "translate(-50%, -50%)";
   successPopup.style.zIndex = "1000";
   successPopup.style.backgroundColor = "white";
   successPopup.style.borderRadius = "5px";
@@ -192,17 +193,21 @@ function showSuccessPopup(txHash, orderCode) {
     <h3 style="color:green;">Purchase Successful</h3>
     <p>Transaction Hash: <a href="https://polygonscan.com/tx/${txHash}" target="_blank">${txHash}</a></p>
     <p>Order Code: ${orderCode}</p>
-    <button onclick="closeSuccessPopup()">Close</button>
+    <button id="close-popup-btn">Close</button>
   `;
   document.body.appendChild(successPopup);
+
+  // Add event listener for the close button
+  document.getElementById("close-popup-btn").addEventListener("click", closeSuccessPopup);
 }
 
 function closeSuccessPopup() {
   const successPopup = document.getElementById("success-popup");
   if (successPopup) {
-    document.body.removeChild(successPopup);
+    successPopup.remove(); // Use 'remove' instead of 'removeChild'
   }
 }
+
 
 
 document
