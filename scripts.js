@@ -144,12 +144,13 @@ async function approveAndPay() {
     hideSpinner(); // Hide spinner after transaction is done
 
     if (responseData.status === "successful") {
-      console.log("Payment successful:", responseData);
-      showSuccessPopup(responseData.txHash, responseData.orderCode);
-    } else {
-      console.error("Payment error:", responseData);
-      alert("Payment failed. Please try again.");
-    }
+  console.log("Payment successful:", responseData);
+  showSuccessPopup(responseData.data.txHash, responseData.orderCode);
+} else {
+  console.error("Payment error:", responseData);
+  alert("Payment failed. Please try again.");
+}
+
   } catch (error) {
     hideSpinner(); // Hide spinner if an error occurs
     console.error("Error processing approval/payment:", error);
