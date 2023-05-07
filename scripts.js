@@ -212,6 +212,7 @@ function showSuccessPopup(txHash, orderCode) {
 }
 
 
+
 function closeSuccessPopup() {
   const successPopup = document.getElementById("success-popup");
   if (successPopup) {
