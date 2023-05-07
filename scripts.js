@@ -171,6 +171,12 @@ function showSpinner() {
   document.body.appendChild(spinner);
 }
 
+function hideSpinner() {
+  const spinner = document.getElementById("spinner");
+  if (spinner) {
+    document.body.removeChild(spinner);
+  }
+}
 
 function showSuccessPopup(txHash, orderCode) {
   const successPopup = document.createElement("div");
