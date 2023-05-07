@@ -143,21 +143,18 @@ async function approveAndPay() {
     const responseData = await response.json();
     hideSpinner(); // Hide spinner after transaction is done
     
-if (responseData.status === "successful") {
-  console.log("Payment successful:", responseData);
-  if (responseData.transactionHash) {
-    showSuccessPopup(responseData.transactionHash, responseData.data.orderCode);
+  if (responseData.status === "successful" && responseData.data && responseData.data.orderCode) {
+    console.log("Payment successful:", responseData);
+    if (responseData.transactionHash) {
+      showSuccessPopup(responseData.transactionHash, responseData.data.orderCode);
+    } else {
+      console.warn("Payment successful, but no transaction hash found:", responseData);
+      alert("Payment successful, but no transaction hash found. Please check your wallet or contact support.");
+    }
   } else {
-    console.warn("Payment successful, but no transaction hash found:", responseData);
-    alert("Payment successful, but no transaction hash found. Please check your wallet or contact support.");
+    console.error("Payment error:", responseData);
+    alert("Payment failed. Please try again.");
   }
-} else {
-  console.error("Payment error:", responseData);
-  alert("Payment failed. Please try again.");
-}
-
-
-
 
   } catch (error) {
     hideSpinner(); // Hide spinner if an error occurs
