@@ -1,5 +1,5 @@
 const apiKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMHhFMTMxNzJhODI5RjBiQTYyMDIwQ0M4MDJlOGQ2OGFkNDM5NjNGOTgzIiwiY2xpZW50X2lkIjoiNWtvc3U3NnAyNjA3cGVpbjUwZjIzbHJ2bGgiLCJjbGllbnRfc2VjcmV0IjoidmxwOG9pNjRsOGdndjNlOGxnNDJmdWhka2ltZjQwOGRlc2ZiNjJkZm9mdjdqanBwbnM0IiwiZXhwIjoxNjg0ODY5Mzk2LCJpYXQiOjE2ODIyNzczOTYsImlzcyI6Ilhpb24gR2xvYmFsIFNlcnZpY2UgQVBJIn0.RYWRfMR-w-4VI-Y2PItofDeMl8dNC240lAweOm5piuA"; // replace with your Xion API key
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMHhlQWQzZjNhNzJFMTdiZTEwODQzMzBEOWI3ODBjRTNCZDE1MjhkQUVmIiwiY2xpZW50X2lkIjoiNjhjNm0wanQ3NjI5OGluZGM1YWt1djFxYm4iLCJjbGllbnRfc2VjcmV0IjoicmUydmRwcXQ1OHNocjVqcmRiajFrMXY4ajIxcW4xcDdwYW45cTF0amZta245MW9zYTBwIiwiZXhwIjoxNjkxNjgxMjc0LCJpYXQiOjE2ODkwODkyNzQsImlzcyI6Ilhpb24gR2xvYmFsIFNlcnZpY2UgQVBJIn0.S9rf4LeoV48SHHM_TRJwSH2bZtfDPzeb9OPz5RhXvgM"; // replace with your Xion API key
 const apiUrl = "https://prodp-api.xion.app/api/v2/single/payment"; // Xion API endpoint
 const contractAddress = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"; // USDT contract address on Polygon mainnet
 const contractAbi = [
@@ -64,7 +64,7 @@ const contractAbi = [
     type: "function",
   },
 ];
-const xgWalletAddress = "0x61e129d8b0836F05b64d7c59500F4fa042EA8c5B"; // XG wallet address
+const xgWalletAddress = "0xEcF5663DE935e8C942Dae3ad26f9Eb168CB97C01"; // XG wallet address
 let userAddress;
 let usdtContract;
 
