@@ -64,7 +64,7 @@ const contractAbi = [
     type: "function",
   },
 ];
-const xgWalletAddress = "0xEcF5663DE935e8C942Dae3ad26f9Eb168CB97C01"; // XG wallet address
+const xgWalletAddress = "0x406aE7273E16F48caA25C5a4C37266661051A11e"; // XG wallet address
 let userAddress;
 let usdtContract;
 
